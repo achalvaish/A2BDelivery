@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">A2BDelivery</string>
+    <string name="URL_holder">Website</string>
+    <string name="action_filter_title">Filter</string>
+    <string name="apply_btn_name">Apply</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_tracking">TrackingActivity</string>
+    <string name="time">Time</string>
+    <string name="meet_location">Meet Location</string>
+    <string name="name">Name</string>
+</resources>
