@@ -1,7 +1,7 @@
 package com.del.a2b.recyclesample.model;
 
 import java.util.Date;
-
+//Tracking class
 public class Tracking {
     private String Id;
     private int trackableId;
