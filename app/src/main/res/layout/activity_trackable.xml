@@ -7,24 +7,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".view.TrackableActivity">
+
 <LinearLayout
     android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
     android:layout_height="wrap_content">
+
     <Button
         android:id="@+id/trackable_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Trackable"
+        android:text="@string/trackable_text"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
     <Button
         android:id="@+id/tracking_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tracking"/>
+        android:text="@string/tracking_text"/>
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         />
