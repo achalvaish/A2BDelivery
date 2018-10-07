@@ -1,8 +1,6 @@
 package com.del.a2b.recyclesample.view;
 
 import android.app.Activity;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,11 +8,8 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -40,9 +35,9 @@ public class TrackableActivity extends Activity implements View.OnClickListener,
     private TrackingManager trackingObj;
     private RecyclerViewAdapter<Trackable> trackableAdapter;
     private RecyclerViewAdapter<Tracking> trackingAdapter;
-    private Button mTrackable,mTracking;
+    private Button mTrackable, mTracking;
     private Spinner categoryFilter;
-    public static LastScreen lastScreen= LastScreen.NONE;
+    public static LastScreen lastScreen = LastScreen.NONE;
     public static String category;
     public static int notificationId = 1;
 
@@ -62,12 +57,12 @@ public class TrackableActivity extends Activity implements View.OnClickListener,
 
         trackableObj = new TrackableManager(this);
         trackingObj = new TrackingManager(this);
-        mLayoutManager=new LinearLayoutManager(this);
+        mLayoutManager = new LinearLayoutManager(this);
 
-        trackableAdapter =new RecyclerViewAdapter<>(this,trackableObj.getTrackableListName(),R.layout.rv_trackable);
-        trackingAdapter = new RecyclerViewAdapter<>(this,TrackingManager.getTrackingListName(),R.layout.rv_tracking);
+        trackableAdapter = new RecyclerViewAdapter<>(this, trackableObj.getTrackableListName(), R.layout.rv_trackable);
+        trackingAdapter = new RecyclerViewAdapter<>(this, TrackingManager.getTrackingListName(), R.layout.rv_tracking);
 
-        categoryFilter.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item, TrackableManager.getCategories()));
+        categoryFilter.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, TrackableManager.getCategories()));
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(trackableAdapter);
         categoryFilter.setOnItemSelectedListener(this);
@@ -81,24 +76,25 @@ public class TrackableActivity extends Activity implements View.OnClickListener,
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId())
-        {
-            case R.id.trackable_btn: trackableAdapter.updateDataset(trackableObj.getTrackableListName());
-                    trackableAdapter.notifyDataSetChanged();
-                    mRecyclerView.setAdapter(trackableAdapter);
-                    categoryFilter.setVisibility(View.VISIBLE);
+        switch (v.getId()) {
+            case R.id.trackable_btn:
+                trackableAdapter.updateDataset(trackableObj.getTrackableListName());
+                trackableAdapter.notifyDataSetChanged();
+                mRecyclerView.setAdapter(trackableAdapter);
+                categoryFilter.setVisibility(View.VISIBLE);
                 break;
-            case R.id.tracking_btn:trackingAdapter.updateDataset(TrackingManager.getTrackingListName());
-                     trackingAdapter.notifyDataSetChanged();
-                     mRecyclerView.setAdapter(trackingAdapter);
-                     categoryFilter.setVisibility(View.GONE);
+            case R.id.tracking_btn:
+                trackingAdapter.updateDataset(TrackingManager.getTrackingListName());
+                trackingAdapter.notifyDataSetChanged();
+                mRecyclerView.setAdapter(trackingAdapter);
+                categoryFilter.setVisibility(View.GONE);
                 break;
         }
     }
@@ -106,13 +102,15 @@ public class TrackableActivity extends Activity implements View.OnClickListener,
     @Override
     protected void onResume() {
         super.onResume();
-        switch (lastScreen)
-        {
-            case ADD: trackableAdapter.updateDataset(trackableObj.getTrackableListName());
+        switch (lastScreen) {
+            case ADD:
+                trackableAdapter.updateDataset(trackableObj.getTrackableListName());
                 trackableAdapter.notifyDataSetChanged();
                 mRecyclerView.setAdapter(trackableAdapter);
                 break;
-            case EDIT: tracking_btn:trackingAdapter.updateDataset(TrackingManager.getTrackingListName());
+            case EDIT:
+                tracking_btn:
+                trackingAdapter.updateDataset(TrackingManager.getTrackingListName());
                 trackingAdapter.notifyDataSetChanged();
                 mRecyclerView.setAdapter(trackingAdapter);
                 break;
@@ -123,8 +121,7 @@ public class TrackableActivity extends Activity implements View.OnClickListener,
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        switch (parent.getId())
-        {
+        switch (parent.getId()) {
             case R.id.spinner:
                 trackableAdapter.updateDataset(trackableObj.getTrackableByCategory(parent.getItemAtPosition(position).toString()));
                 trackableAdapter.notifyDataSetChanged();
@@ -149,12 +146,12 @@ public class TrackableActivity extends Activity implements View.OnClickListener,
                     activeNetwork.isConnectedOrConnecting();
 
             if (isConnected) {
-                    context = getApplicationContext();
-                    CharSequence text = "Connected To Internet !!!";
-                    int duration = Toast.LENGTH_SHORT;
+                context = getApplicationContext();
+                CharSequence text = "Connected To Internet !!!";
+                int duration = Toast.LENGTH_SHORT;
 
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
 
             } else {
                 // not connected to the internet
@@ -165,7 +162,9 @@ public class TrackableActivity extends Activity implements View.OnClickListener,
 
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
-                }
             }
+        }
     };
 }
+
+

@@ -11,14 +11,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.del.a2b.recyclesample.controller.RecyclerViewAdapter;
-import com.del.a2b.recyclesample.controller.TrackableManager;
-import com.del.a2b.recyclesample.controller.TrackingManager;
-import com.del.a2b.recyclesample.model.LastScreen;
-import com.del.a2b.recyclesample.model.Trackable;
-import com.del.a2b.recyclesample.model.Tracking;
+
 import com.del.a2b.recyclesample.R;
-import com.del.a2b.recyclesample.model.LastScreen;
 import com.del.a2b.recyclesample.model.RecyclerViewRow;
 import com.del.a2b.recyclesample.model.Trackable;
 
