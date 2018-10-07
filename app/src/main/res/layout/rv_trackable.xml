@@ -55,6 +55,14 @@
                     android:text="Add Tracking"
                     android:textColor="@color/colorAccent"
                     android:theme="@style/PrimaryFlatButton" />
+
+                <Button
+                    android:id="@+id/suggestnowbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Suggest Now" />
+
             </LinearLayout>
 
         </LinearLayout>

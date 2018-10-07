@@ -1,10 +1,19 @@
 package com.del.a2b.recyclesample.view;
 
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -12,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.del.a2b.recyclesample.R;
 import com.del.a2b.recyclesample.controller.RecyclerViewAdapter;
@@ -34,6 +44,9 @@ public class TrackableActivity extends Activity implements View.OnClickListener,
     private Spinner categoryFilter;
     public static LastScreen lastScreen= LastScreen.NONE;
     public static String category;
+    public static int notificationId = 1;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +71,10 @@ public class TrackableActivity extends Activity implements View.OnClickListener,
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(trackableAdapter);
         categoryFilter.setOnItemSelectedListener(this);
+
+
+        registerReceiver(networkChangeReceiver, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
+        // register the receiver
 
 
     }
@@ -120,4 +137,35 @@ public class TrackableActivity extends Activity implements View.OnClickListener,
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    BroadcastReceiver networkChangeReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+
+            ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+            boolean isConnected = activeNetwork != null &&
+                    activeNetwork.isConnectedOrConnecting();
+
+            if (isConnected) {
+                    context = getApplicationContext();
+                    CharSequence text = "Connected To Internet !!!";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+
+            } else {
+                // not connected to the internet
+                context = getApplicationContext();
+                CharSequence text = "Disconnected From Internet !!!";
+
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                }
+            }
+    };
 }

@@ -8,30 +8,32 @@
     android:orientation="vertical"
     tools:context=".view.TrackableActivity">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
-    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
 
-    <Button
-        android:id="@+id/trackable_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/trackable_text"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
-    <Button
-        android:id="@+id/tracking_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tracking_text"/>
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
-</LinearLayout>
+
+        <Button
+            android:id="@+id/trackable_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:text="@string/trackable_text" />
+
+        <Button
+            android:id="@+id/tracking_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tracking_text" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/my_recycler_view"
             android:layout_width="match_parent"
