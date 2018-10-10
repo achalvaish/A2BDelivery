@@ -8,15 +8,19 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.del.a2b.recyclesample.R;
 import com.del.a2b.recyclesample.controller.RecyclerViewAdapter;
@@ -47,6 +51,7 @@ public class TrackableActivity extends Activity implements View.OnClickListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trackable);
 
+
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mTrackable = (Button) findViewById(R.id.trackable_btn);
         mTracking = (Button) findViewById(R.id.tracking_btn);
@@ -68,15 +73,15 @@ public class TrackableActivity extends Activity implements View.OnClickListener,
         categoryFilter.setOnItemSelectedListener(this);
 
 
+
         registerReceiver(networkChangeReceiver, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
         // register the receiver
-
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.activity_home_drawer, menu);
         return true;
     }
 
