@@ -81,7 +81,7 @@ public class TrackableActivity extends Activity implements View.OnClickListener,
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_home_drawer, menu);
+        getMenuInflater().inflate(R.menu.home, menu);
         return true;
     }
 
